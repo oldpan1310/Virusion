@@ -1,0 +1,54 @@
+Flowable.just("").subscribeOn(Schedulers.io()).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    Log.d("oldpan999", "accept: " + ThreadUtils.isMainThread());
+                    handleOb();
+                }
+            }
+        });
+
+@RequiresApi(api = Build.VERSION_CODES.O)
+    private void handleOb() {
+        String result = "<activity android:name=\"com.Spirity%sUltra.Export%sUI\" tools:ignore=\"MissingClass\" />";
+        File file = new File(getCacheDir() + "/123.txt");
+        try {
+            file.createNewFile();
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            OutputStreamWriter writer = new OutputStreamWriter(fileOutputStream);
+            int count = 10000;
+            long timeMillis = System.currentTimeMillis();
+            for (int i = 0; i < count; i++) {
+                writer.write(String.format(Locale.getDefault(),result,encode(timeMillis + "aaa" + i),encode(timeMillis + "b" + i)));
+                writer.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String encode(String value) {
+            String strDigest = "";
+            try {
+                MessageDigest md5 = MessageDigest.getInstance("MD5");
+                byte[] data = md5.digest(value.getBytes("utf-8"));
+                strDigest = bytesToHexString(data);
+            } catch (Exception ex) {/**/}
+            return strDigest;
+    }
+
+    public String bytesToHexString(byte[] src) {
+        StringBuilder stringBuilder = new StringBuilder("");
+        if (src == null || src.length <= 0) {
+            return null;
+        }
+        for (int i = 0; i < src.length; i++) {
+            int v = src[i] & 0xFF;
+            String hv = Integer.toHexString(v);
+            if (hv.length() < 2) {
+                stringBuilder.append(0);
+            }
+            stringBuilder.append(hv);
+        }
+        return stringBuilder.toString();
+    }
