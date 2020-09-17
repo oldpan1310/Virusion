@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.travelvirus" >
+    package="com.travelvirus">
 
     <application>
+
         <activity
             android:name="redae2fd1bc864b97bdc1201e3b5ef50db7w.result48ea4e4f3469292a6a71fd0300c6b6a8.Version4019ad50b5dba7b0b9a1d12e69a749deAStreamUI"
             tools:ignore="MissingClass" />
@@ -53403,6 +53403,7 @@
         <activity
             android:name="red56323691979fe9bb5db2752bbfee62e5w.result764bd38fd2f5caeab802d2503ed461d9.Versiond2151c709a555466ef5783e2dda905d1AStreamUI"
             tools:ignore="MissingClass" />
+
     </application>
 
 </manifest>
